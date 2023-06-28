@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Header Example</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-header">
+			<div class="container-fluid">
+				<span class="navbar-text" style="margin-right: 40px;">携帯端末管理システム</span>
+				<span class="navbar-text">ログイン:</span> <span
+					class="navbar-text spacer">admin</span> <span class="navbar-text">様</span>
+				<div class="collapse navbar-collapse">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<button class="btn btn-outline-light" type="button">Logout</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="header-space"></div>
+		<!-- ヘッダーと要素の間のスペース -->
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-container">
+					<div class="d-flex flex-row">
+						<div class="mb-3">
+							<div th:text="${nowDate}"></div>
+						</div>
+						<div class="mb-3 ms-5">
+							<div th:text="${nowTime}"></div>
+						</div>
+					</div>
+					<form th:action="@{/home}" th:object="${enterForm}">
+						<div class="mb-3">
+							<label for="company" class="form-label">企業名</label> <input
+								type="text" class="form-control" id="company"
+								th:field="*{companyName}">
+						</div>
+						<div class="mb-3">
+							<label for="name" class="form-label">名前</label> <input
+								type="text" class="form-control" id="name"
+								th:field="*{userName}">
+						</div>
+						<div class="mb-3">
+							<label for="address" class="form-label">住所</label> <input
+								type="text" class="form-control" id="address"
+								th:field="*{address}">
+						</div>
+						<div class="mb-3">
+							<label for="phone" class="form-label">電話番号</label> <input
+								type="text" class="form-control" id="phone" value=""
+								th:field="*{phoneNumber}">
+						</div>
+						<div class="mb-3">
+							<label for="purpose" class="form-label">来客目的</label> <input
+								type="tel" class="form-control" id="purpose"
+								th:field="*{purpose}">
+						</div>
+						<button
+							class="btn btn-primary btn-lg d-flex justify-content-center align-items-center"
+							style="width: 15%;" data-bs-target="#popupModal">入室</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th scope="col">名前</th>
+							<th scope="col">入室時刻</th>
+							<th scope="col">退室時刻</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="users:${usersWithTimeList}">
+							<td th:text="${users.userName}"></td>
+							<td th:text="${users.entryTime}"></td>
+							<td th:text="${users.exitTime}"></td>
+							<td><button class="btn btn-secondary btn-sm">退室</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="popupModal" tabindex="-1"
+		aria-labelledby="popupLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>入室登録を完了してよろしいですか？</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">はい</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">いいえ</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

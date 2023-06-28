@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS user (
+    userId INT(3) IDENTITY(2,1) PRIMARY KEY NOT NULL,
+    companyName VARCHAR(100) NOT NULL,
+    userName VARCHAR(100) NOT NULL,
+    address VARCHAR(50) NOT NULL,
+    phoneNumber VARCHAR(10) NOT NULL,
+    purpose VARCHAR(500) NOT NULL,
+    entryTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    exitTime TIMESTAMP,
+    userStatus TINYINT NOT NULL
+);

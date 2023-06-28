@@ -1,0 +1,32 @@
+.navbar-header {
+	background-color: #343a40; /* 濃いグレー */
+	padding-left: 20px; /* 左の余白を追加 */
+	padding-right: 20px; /* 右の余白を追加 */
+}
+
+.navbar-brand, .navbar-text {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 16px;
+	color: white; /* 白色 */
+	margin-right: 20px; /* 右側の間隔を調整 */
+}
+
+.navbar-text.spacer {
+	margin: 0; /* 余白を削除 */
+}
+
+.navbar-nav {
+	margin-left: auto; /* 左寄せを解除し、右に寄せる */
+}
+
+.form-container {
+	margin-bottom: 20px;
+}
+
+.form-container .btn {
+	float: right;
+}
+
+.header-space {
+	height: 30px; /* ヘッダーと要素の間のスペースの高さを調整 */
+}
